@@ -1,0 +1,48 @@
+Food delivery API curl verification (Python reference server on localhost:8000)
+
+--- GET dashboard orders (expected HTTP 200) ---
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.4
+Date: Wed, 25 Nov 2026 08:30:08 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 386
+
+{"data": [{"id": "ord-1001", "restaurantId": "res-17", "customerName": "Mina Patel", "status": "preparing", "estimatedDeliveryAt": "2026-11-25T08:59:54Z", "updatedAt": "2026-11-25T08:29:54Z"}, {"id": "ord-1002", "restaurantId": "res-17", "customerName": "Noah Kim", "status": "confirmed", "estimatedDeliveryAt": "2026-11-25T09:14:54Z", "updatedAt": "2026-11-25T08:29:54Z"}], "count": 2}
+
+--- GET one order (expected HTTP 200) ---
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.4
+Date: Wed, 25 Nov 2026 08:30:08 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 191
+
+{"data": {"id": "ord-1001", "restaurantId": "res-17", "customerName": "Mina Patel", "status": "preparing", "estimatedDeliveryAt": "2026-11-25T08:59:54Z", "updatedAt": "2026-11-25T08:29:54Z"}}
+
+--- PATCH invalid status transition (expected HTTP 409) ---
+HTTP/1.0 409 Conflict
+Server: BaseHTTP/0.6 Python/3.12.4
+Date: Wed, 25 Nov 2026 08:30:08 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 170
+
+{"error": {"code": "invalid_status", "message": "Status cannot move from preparing to delivered.", "details": {"allowedNextStatuses": ["ready_for_pickup", "cancelled"]}}}
+
+--- PATCH order status (expected HTTP 200) ---
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.4
+Date: Wed, 25 Nov 2026 08:30:08 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 198
+
+{"data": {"id": "ord-1001", "restaurantId": "res-17", "customerName": "Mina Patel", "status": "ready_for_pickup", "estimatedDeliveryAt": "2026-11-25T08:59:54Z", "updatedAt": "2026-11-25T08:30:08Z"}}
+
+--- PATCH delivery ETA (expected HTTP 200) ---
+HTTP/1.0 200 OK
+Server: BaseHTTP/0.6 Python/3.12.4
+Date: Wed, 25 Nov 2026 08:30:08 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 198
+
+{"data": {"id": "ord-1001", "restaurantId": "res-17", "customerName": "Mina Patel", "status": "ready_for_pickup", "estimatedDeliveryAt": "2030-01-01T12:00:00Z", "updatedAt": "2026-11-25T08:30:08Z"}}
+
+PASS: all endpoint and error-response assertions succeeded.
