@@ -1,0 +1,43 @@
+Fleet Maintenance API HTTP verification
+
+Valid POST: HTTP 201; X-Request-Id: 8e98e4ae-254a-4dba-b2e8-e4d7ca10140e
+
+{
+  "data": {
+    "id": "70b6e872-facf-4994-9fca-1199b9b081f4",
+    "vehicleId": "TRUCK-204",
+    "serviceType": "oil_change",
+    "servicedAt": "2026-11-01T10:00:00.000Z",
+    "nextDueAt": "2027-05-01T10:00:00.000Z",
+    "odometerKm": 48250,
+    "notes": "Replaced oil and filter",
+    "dueStatus": "current"
+  }
+}
+
+Invalid POST: HTTP 422; X-Request-Id: 26662a49-490c-4e1a-8736-77b8eb1e9e48
+
+{
+  "error": {
+    "code": "validation_failed",
+    "message": "Maintenance record validation failed",
+    "details": [
+      {
+        "field": "nextDueAt",
+        "message": "Must be later than servicedAt"
+      },
+      {
+        "field": "odometerKm",
+        "message": "Must be a number from 0 to 2000000"
+      }
+    ],
+    "requestId": "26662a49-490c-4e1a-8736-77b8eb1e9e48"
+  }
+}
+
+GET after invalid POST: HTTP 200
+
+{
+  "data": [],
+  "count": 0
+}

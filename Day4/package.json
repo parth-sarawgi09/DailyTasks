@@ -1,0 +1,14 @@
+{
+  "name": "fleet-maintenance-api",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express fleet maintenance API with validation and request middleware",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
