@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap");
+
+:root {
+  font-family: "DM Sans", sans-serif;
+  color: #242d27;
+  background: #f5f3ed;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --green: #2d6048;
+  --ink: #242d27;
+  --muted: #788078;
+  --line: #e8e6de;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; min-width: 320px; }
+
+button, input { font: inherit; }
+
+.page-shell { max-width: 1180px; margin: auto; padding: 0 42px; }
+
+.topbar {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e3da;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: -.04em;
+  font-size: 19px;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 9px;
+  background: var(--green);
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: 19px;
+}
+
+.brand-light { color: #8c938b; font-weight: 400; }
+.member-label { color: #626d64; font-size: 12px; }
+.member-dot { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: #62a77d; }
+
+.welcome { max-width: 650px; padding: 58px 0 43px; }
+.eyebrow { margin: 0 0 13px; color: var(--green); text-transform: uppercase; letter-spacing: .13em; font-size: 10px; font-weight: 700; }
+.welcome h1 { margin: 0; font: 500 clamp(38px, 5vw, 58px)/1.08 "Playfair Display", serif; letter-spacing: -.045em; }
+.welcome-copy { max-width: 390px; margin: 17px 0 0; color: #6d766e; font-size: 14px; line-height: 1.65; }
+
+.content { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(230px, .75fr); gap: 35px; align-items: start; padding-bottom: 70px; }
+.catalog { padding: 26px; border: 1px solid var(--line); border-radius: 13px; background: #fffefa; }
+.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.section-heading .eyebrow { margin-bottom: 7px; }
+.section-heading h2 { margin: 0; font: 500 25px "Playfair Display", serif; letter-spacing: -.025em; }
+
+.search { display: flex; align-items: center; gap: 8px; width: 205px; padding: 8px 10px; border: 1px solid #e7e6df; border-radius: 7px; color: #6d766e; font-size: 19px; }
+.search input { width: 100%; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 11px; }
+.search input::placeholder { color: #929990; }
+
+.book-list { display: grid; gap: 11px; }
+.book-card { display: flex; gap: 15px; padding: 14px; border: 1px solid #eeece5; border-radius: 9px; }
+.book-cover { display: grid; flex: 0 0 51px; height: 68px; place-items: center; border-radius: 4px; background: #e7eee5; color: #55725a; font: 600 26px "Playfair Display", serif; }
+.book-card:nth-child(2) .book-cover { background: #f2e9dd; color: #a26d42; }
+.book-card:nth-child(3) .book-cover { background: #e8e7f0; color: #686487; }
+.book-details { min-width: 0; flex: 1; }
+.book-heading { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.book-heading h3 { margin: 1px 0 4px; font-size: 14px; font-weight: 600; }
+.muted { margin: 0; color: var(--muted); font-size: 11px; }
+.badge { flex: 0 0 auto; padding: 5px 8px; border-radius: 20px; font-size: 9px; font-weight: 600; }
+.badge-available { background: #eaf3eb; color: #3d7452; }
+.badge-unavailable { background: #f3eee6; color: #8c6b45; }
+.book-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 12px; }
+.hold-count { color: #80877f; font-size: 10px; }
+.button { padding: 7px 10px; border: 0; border-radius: 5px; cursor: pointer; font-size: 10px; font-weight: 600; }
+.button-primary { background: var(--green); color: white; }
+.button-primary:hover { background: #244e3a; }
+.button-secondary { background: #edf2eb; color: #3d684d; }
+.empty-state, .state-message { padding: 28px 12px; color: #727a71; text-align: center; font-size: 13px; }
+
+.side-column { display: grid; gap: 15px; }
+.reminder { display: flex; gap: 12px; padding: 16px; border: 1px solid #f0d9c4; border-radius: 10px; background: #fff8f1; }
+.reminder-icon, .error-mark { display: grid; flex: 0 0 23px; width: 23px; height: 23px; place-items: center; border-radius: 50%; background: #f3e2cf; color: #a66234; font-size: 12px; font-weight: 700; }
+.reminder h2, .help-card h2, .error-state h2 { margin: 0 0 6px; font: 500 18px "Playfair Display", serif; }
+.reminder p, .help-card > p:not(.eyebrow), .error-state p { margin: 0; color: #77766d; font-size: 11px; line-height: 1.65; }
+.help-card { position: relative; overflow: hidden; min-height: 190px; padding: 20px; border-radius: 10px; background: #e9eee5; }
+.help-card .eyebrow { margin-bottom: 10px; color: #61745f; }
+.help-card h2 { max-width: 160px; font-size: 22px; }
+.help-card > p:not(.eyebrow) { max-width: 195px; }
+.help-decoration { position: absolute; right: 12px; bottom: -34px; color: #d3ddce; font: 150px "Playfair Display", serif; transform: rotate(-15deg); }
+.fine-print { margin: 0; color: #8d9189; font-size: 10px; line-height: 1.6; }
+.error-state { display: flex; gap: 13px; padding: 24px; border: 1px solid #edd8cf; border-radius: 12px; background: #fff8f5; }
+.error-mark { background: #f3e2dc; color: #a34f36; }
+.error-state p { margin-bottom: 14px; }
+
+.footer { display: flex; justify-content: space-between; padding: 19px 0 25px; border-top: 1px solid #e6e3da; color: #858b82; font-size: 10px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+
+@media (max-width: 760px) {
+  .page-shell { padding: 0 20px; }
+  .welcome { padding: 43px 0 32px; }
+  .content { grid-template-columns: 1fr; gap: 20px; }
+  .side-column { grid-template-columns: 1fr 1fr; }
+  .fine-print { grid-column: 1 / -1; }
+}
+
+@media (max-width: 520px) {
+  .page-shell { padding: 0 15px; }
+  .catalog { padding: 17px 13px; }
+  .section-heading { align-items: stretch; flex-direction: column; }
+  .search { width: 100%; }
+  .book-card { gap: 10px; padding: 11px 9px; }
+  .book-heading { flex-direction: column; gap: 6px; }
+  .book-footer { align-items: start; flex-direction: column; }
+  .side-column { grid-template-columns: 1fr; }
+}
